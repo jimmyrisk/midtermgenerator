@@ -1,0 +1,56 @@
+---
+title: "Midterm"
+output:
+  pdf_document:
+    keep_tex: yes
+    includes:
+      in_header: preamble-latex.tex
+  html_document:
+    df_print: paged
+classoption: xcolor=usenames,dvipsnames
+params:
+  broncoID: 1
+---
+
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(out.width = "70%", out.height="30%", fig.align="center", warning=FALSE, message=FALSE,comment = "")
+
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+
+```
+
+
+
+Your BroncoID: `r params$broncoID`
+
+```{r,echo=FALSE}
+set.seed(params$broncoID)
+q1_c <- round(runif(1,0.5,1.5),1)
+q1_upper <- sample(c(1,2,3),1)
+
+q2_a <- sample(c(1,2,3,4,5),1)
+q2_b <- sample(c(1,2,3,4,5),1)
+```
+
+\section{Exam Questions}
+
+\begin{enumerate}
+\item Compute the integral.
+
+\[ \int_0^`r q1_upper` e^{`r q1_c`x}dx.\]
+
+\vspace{1cm}
+
+\item Solve for $x$.
+
+\[ `r q2_a` = \frac{`r q2_b`}{x}.\]
+
+\end{enumerate}
+
+
+
